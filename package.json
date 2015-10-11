@@ -1,0 +1,49 @@
+{
+  "name": "react_with_redux_counter_sample",
+  "version": "1.0.0",
+  "description": "React with Redux Counter Sample",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build-script",
+    "build-dist": "npm run build-script-dist",
+    "build-script": "browserify --debug src/js/index.js -t > build/js/app.js",
+    "build-script-dist": "NODE_ENV=production browserify src/js/index.js -t | uglifyjs -m --comments > build/js/app.js",
+    "watch": "watchify --debug src/js/index.js -o build/js/app.js -v",
+    "server": "browser-sync start --server build --files 'build/**/*' --no-open",
+    "start": "npm run server & npm run watch",
+    "test": "./node_modules/.bin/karma start karma.conf.js"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "optional": [
+            "es7.asyncFunctions"
+          ]
+        }
+      ]
+    ]
+  },
+  "author": "iNo <wdf7322@yahoo.co.jp>",
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browser-sync": "^2.9.11",
+    "browserify": "^11.2.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.10",
+    "karma-browserify": "^4.4.0",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-mocha-reporter": "^1.1.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-redux": "^3.1.0",
+    "redux": "^3.0.2",
+    "redux-devtools": "^2.1.5",
+    "rewireify": "^0.2.4",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.4.0"
+  }
+}
